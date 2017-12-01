@@ -1,0 +1,44 @@
+Installation steps for Docker installation on Ubuntu
+please follow below steps for installing docker
+
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+sudo apt-cache policy docker-ce
+sudo apt-get install -y docker-ce
+sudo systemctl status docker
+ps -ef | grep docker
+docker --version
+
+#### start here below are sample docker commands 
+sudo docker run alpine /bin/sh
+sudo docker run -it alpine /bin/sh
+sudo docker run alpine ls -l
+#### end here below are sample docker commands 
+
+
+sudo docker images --> to display docker images
+sudo docker ps -—> to know the running containers
+
+##### docker container stopping and removing it from running using container id
+sudo docker stop 6a3884611cc6
+sudo docker rm 6a3884611cc6
+
+clone the public repo locally of phython App.
+####create docker image...
+sudo docker build . -t ananthkannan/myfirstapp
+sudo docker images 
+the above command will display docker images built.
+sudo docker login 
+####enter your docker hub crendetials
+
+sudo docker push ananthkannan/myfirstapp
+
+#######How to run the container after pushing into repo
+
+sudo docker run -p 8080:5000 --name myfirstApp1 ananthkannan/myfirstapp
+
+### if you would like to run on differet port 
+sudo docker run -p 8090:5000 --name myfirstApp2 ananthkannan/myfirstapp
+Make sure you open port 8090 in security firewall rules.
+now go to browser enter the public dns name with port no 8090.  
