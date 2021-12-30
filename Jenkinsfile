@@ -33,7 +33,7 @@ pipeline {
         steps {
             script {
               sshagent(credentials: ['ssh-docker'], ignoreMissing: true) { 
-              sh 'docker run -p 5000:5000 -d --name test mujeer472/nginx:$BUILD_NUMBER'
+              sh 'ssh root@13.78.214.65  "docker run -p 5000:5000 -d --name test mujeer472/nginx:$BUILD_NUMBER"'
                
                   }
             
